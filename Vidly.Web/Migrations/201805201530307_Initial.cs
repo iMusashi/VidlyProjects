@@ -37,7 +37,7 @@ namespace Vidly.Web.Migrations
                 "dbo.Genres",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        Id = c.Byte(nullable: false),
                         Name = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
@@ -52,11 +52,10 @@ namespace Vidly.Web.Migrations
                         DateAdded = c.DateTime(nullable: false),
                         Count = c.Int(nullable: false),
                         GenreId = c.Byte(nullable: false),
-                        Genre_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Genres", t => t.Genre_Id)
-                .Index(t => t.Genre_Id);
+                .ForeignKey("dbo.Genres", t => t.GenreId, cascadeDelete: true)
+                .Index(t => t.GenreId);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -134,7 +133,7 @@ namespace Vidly.Web.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.Movies", "Genre_Id", "dbo.Genres");
+            DropForeignKey("dbo.Movies", "GenreId", "dbo.Genres");
             DropForeignKey("dbo.Customers", "MembershipTypeId", "dbo.MembershipTypes");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
@@ -142,7 +141,7 @@ namespace Vidly.Web.Migrations
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.Movies", new[] { "Genre_Id" });
+            DropIndex("dbo.Movies", new[] { "GenreId" });
             DropIndex("dbo.Customers", new[] { "MembershipTypeId" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");

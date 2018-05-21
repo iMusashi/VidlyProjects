@@ -47,9 +47,9 @@ namespace Vidly.Web.Controllers
             return View(movies);
         }
 
-        public ActionResult Details(int movieId)
+        public ActionResult Details(int id)
         {
-            var movie = _context.Movies.Include("Genre").SingleOrDefault(c => c.Id == movieId);
+            var movie = _context.Movies.Include("Genre").SingleOrDefault(c => c.Id == id);
             return View(movie);
         }
     }
