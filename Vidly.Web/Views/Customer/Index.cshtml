@@ -19,7 +19,7 @@ else
         {
             <tr>
                 <td>
-                    <a href="Details/@customer.Id" class="">@customer.Name</a>
+                    @Html.ActionLink(customer.Name, "Edit", "Customer", new { id = customer.Id})
                 </td>
                 <td>
                     @customer.MembershipType.Name

@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
 using Vidly.Web.Models;
+using Vidly.Web.ViewModels;
 
 namespace Vidly.Web.Controllers
 {
@@ -31,6 +31,50 @@ namespace Vidly.Web.Controllers
             if (customer == null)
                 return HttpNotFound();
             return View(customer);
+        }
+
+        public ActionResult New()
+        {
+            var membershipTypes = _context.MembershipTypes.ToList();
+            var viewModel = new CustomerFormViewModel
+            {
+                MembershipTypes = membershipTypes,
+            };
+            return View("CustomerForm", viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Save(Customer customer)
+        {
+            if(customer.Id == 0)
+            {
+                _context.Customers.Add(customer);
+            }
+            else
+            {
+                var Customer = _context.Customers.Single(x => x.Id == customer.Id);
+                Customer.Name = customer.Name;
+                Customer.Birthdate = customer.Birthdate;
+                Customer.MembershipTypeId = customer.MembershipTypeId;
+                Customer.IsSubscribedToNewsletter = customer.IsSubscribedToNewsletter;
+            }
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Customer");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var membershipTypes = _context.MembershipTypes.ToList();
+            var customer = _context.Customers.Single(x => x.Id == id);// Include("MembershipType").
+            if (customer == null)
+                return HttpNotFound();
+            var viewModel = new CustomerFormViewModel
+            {
+                MembershipTypes = membershipTypes,
+                Customer = customer
+            };
+            return View("CustomerForm", viewModel);
         }
      }
 }
