@@ -213,6 +213,14 @@
     <Compile Include="Migrations\201805211701371_PopulateGenres.Designer.cs">
       <DependentUpon>201805211701371_PopulateGenres.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805231745302_ChangeDatetimeToDatetime2.cs" />
+    <Compile Include="Migrations\201805231745302_ChangeDatetimeToDatetime2.Designer.cs">
+      <DependentUpon>201805231745302_ChangeDatetimeToDatetime2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805231756230_ChangeDatetimeToDatetime21.cs" />
+    <Compile Include="Migrations\201805231756230_ChangeDatetimeToDatetime21.Designer.cs">
+      <DependentUpon>201805231756230_ChangeDatetimeToDatetime21.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Genre.cs" />
@@ -224,6 +232,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="ViewModels\CustomerFormViewModel.cs" />
+    <Compile Include="ViewModels\MovieFormViewModel.cs" />
     <Compile Include="ViewModels\RandomMovieViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -291,6 +300,7 @@
     <Content Include="Views\Movies\Index.cshtml" />
     <Content Include="Views\Movies\Details.cshtml" />
     <Content Include="Views\Customer\CustomerForm.cshtml" />
+    <Content Include="Views\Movies\MovieForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -320,6 +330,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805211701371_PopulateGenres.resx">
       <DependentUpon>201805211701371_PopulateGenres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805231745302_ChangeDatetimeToDatetime2.resx">
+      <DependentUpon>201805231745302_ChangeDatetimeToDatetime2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805231756230_ChangeDatetimeToDatetime21.resx">
+      <DependentUpon>201805231756230_ChangeDatetimeToDatetime21.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
