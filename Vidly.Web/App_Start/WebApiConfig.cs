@@ -13,7 +13,7 @@ namespace Vidly.Web
             settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             settings.Formatting = Formatting.Indented;
             settings.PreserveReferencesHandling = PreserveReferencesHandling.Objects;
-            settings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            settings.ReferenceLoopHandling = ReferenceLoopHandling.Serialize;
             config.Formatters.Remove(config.Formatters.XmlFormatter);
 
             config.MapHttpAttributeRoutes();
